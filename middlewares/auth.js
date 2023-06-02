@@ -3,8 +3,7 @@ const jwt = require('jsonwebtoken');
 const { modal: UserModal } = require('./../Modals/UserModal');
 
 const isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
-  // const { token } = req.cookies
-  let token = null
+  const { token } = req.cookies
   if (!token) {
     //check may be beared token is passed
     token = req?.headers?.authorization?.split(" ")[1];
