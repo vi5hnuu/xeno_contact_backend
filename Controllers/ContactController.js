@@ -17,7 +17,7 @@ module.exports.addContact = catchasyncError(async (req, res, next) => {
 
 module.exports.getContacts = catchasyncError(async (req, res, next) => {
   const uid = req.user._id
-  const contactsPerPage = 10;
+  const contactsPerPage = 20;
   const pageNo = req.query.page || 1
   const contacts = await Contact.find({ user: uid }).skip((pageNo - 1) * contactsPerPage).limit(10)
   res.status(200).json({
